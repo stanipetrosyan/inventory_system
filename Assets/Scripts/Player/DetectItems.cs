@@ -16,20 +16,20 @@ namespace Player {
             Physics.SphereCast(transform.position, radius, Vector3.forward, out hit, radius, interactableLayer);
 
             if (hit.collider is not null) {
-                Debug.Log(hit.collider.name);
                 switch (LayerMask.LayerToName(hit.collider.gameObject.layer)) {
                     case "Interactable":
-                        if (hit.collider.gameObject.GetComponent<Interactable>().CanInteract()) {
+                        var interactableItem = hit.collider.gameObject.GetComponent<Interactable>();
+                        if (interactableItem.CanInteract()) {
                             Managers.HUD.Enable();
                             if (Input.GetKeyDown(KeyCode.E)) {
-                                hit.collider.gameObject.GetComponent<Interactable>().Interact();
+                                interactableItem.Interact();
                             }
                         }
 
                         break;
 
                     default:
-                        Managers.HUD.Enable();
+                        Managers.HUD.Disable();
                         break;
                 }
             }
