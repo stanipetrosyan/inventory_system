@@ -6,7 +6,7 @@ namespace Inventory {
         public int count = 1;
         public string displayName;
         public Type type;
-
+        public Sprite icon;
         public void Use() {
             count--;
         }

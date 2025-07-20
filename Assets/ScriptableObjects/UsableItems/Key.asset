@@ -15,3 +15,4 @@ MonoBehaviour:
   count: 1
   displayName: Chiave
   type: 0
+  icon: {fileID: 21300000, guid: a349e731aa0f02699b7010381a456430, type: 3}
