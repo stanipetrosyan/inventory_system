@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameManager {
-    [RequireComponent(typeof(InventoryManager))]
+    [RequireComponent(typeof(InventoryManager), typeof(HUDManager))]
     public class Managers : MonoBehaviour {
         public static InventoryManager Inventory { get; private set; }
+        public static HUDManager HUD { get; private set; }
 
         private List<IGameManager> startSequence;
 
 
-        void Awake() {
-            Inventory = GetComponent<InventoryManager>();
+            void Awake() {
+                Inventory = GetComponent<InventoryManager>();
+                HUD = GetComponent<HUDManager>();
 
-            startSequence = new List<IGameManager> {
-                Inventory,
-            };
+                startSequence = new List<IGameManager> {
+                    Inventory,
+                    HUD
+                };
 
-            StartCoroutine(StartupManagers());
-        }
+                StartCoroutine(StartupManagers());
+            }
 
         private IEnumerator StartupManagers() {
             foreach (IGameManager manager in startSequence) {
