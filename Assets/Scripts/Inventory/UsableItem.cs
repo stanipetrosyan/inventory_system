@@ -12,7 +12,7 @@ namespace Inventory {
         }
         
         public enum Type {
-            KEY
+            KEY, HEALTH_POTION, ENERGY_POTION
         }
     }
 }

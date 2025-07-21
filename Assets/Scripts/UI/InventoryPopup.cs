@@ -17,6 +17,7 @@ namespace UI {
 
                 itemComponent.SetIcon(item.icon);
                 itemComponent.SetDescription(item.displayName);
+                itemComponent.SetCount(item.count.ToString());
 
                 itemObject.transform.localPosition = new Vector2(x, y);
 

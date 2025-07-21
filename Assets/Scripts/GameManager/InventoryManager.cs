@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Inventory;
 using UnityEngine;
 
@@ -17,7 +18,16 @@ namespace GameManager {
         }
 
         public void Add(UsableItem item) {
-            inventory.Add(item);
+            var alreadyExists = inventory.Where(inventoryItem => inventoryItem.type == item.type).ToList();
+
+            if (alreadyExists.Count == 0) {
+                item.count = 1;
+                inventory.Add(item);
+            }
+            else {
+                alreadyExists.ForEach(inventoryItem => inventoryItem.count++);
+            }
+            
         }
 
         public List<UsableItem> GetItems() {

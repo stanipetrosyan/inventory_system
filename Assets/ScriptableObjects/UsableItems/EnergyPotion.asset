@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 1
   displayName: Pozione energizzante
-  type: 0
+  type: 2
   icon: {fileID: 21300000, guid: a4977a330887265c19acbfa3b7821a4b, type: 3}
