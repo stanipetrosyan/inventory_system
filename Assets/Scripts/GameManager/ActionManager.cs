@@ -1,5 +1,6 @@
 using System;
 using Inventory;
+using Player;
 using TMPro;
 using UnityEngine;
 
@@ -17,8 +18,10 @@ namespace GameManager {
                 case UsableItem.Type.KEY:
                     break;
                 case UsableItem.Type.HEALTH_POTION:
+                    Managers.Stats.IncrementHealth();
                     break;
                 case UsableItem.Type.ENERGY_POTION:
+                    Managers.Stats.IncrementEnergy();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

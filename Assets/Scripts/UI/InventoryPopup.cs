@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameManager;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace UI {
         [SerializeField] private GameObject background;
         [SerializeField] private GameObject itemPrefab;
         private int spaceBetweenItems;
+        private List<GameObject> items = new List<GameObject>();
+
 
         private void OnEnable() {
             var x = -450;
@@ -21,7 +24,15 @@ namespace UI {
 
                 spaceBetweenItems = itemComponent.GetWidth() + 10;
                 x += spaceBetweenItems;
+
+
+                items.Add(itemObject);
             });
+        }
+
+        private void OnDisable() {
+            items.ForEach(Destroy);
+            items.Clear();
         }
     }
 }

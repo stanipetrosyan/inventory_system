@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameManager {
-    [RequireComponent(typeof(InventoryManager), typeof(HUDManager), typeof(ActionManager))]
     public class Managers : MonoBehaviour {
         public static InventoryManager Inventory { get; private set; }
         public static HUDManager HUD { get; private set; }
         public static ActionManager Action { get; private set; }
+        public static PlayerStatsManager Stats { get; private set; }
 
         private List<IGameManager> startSequence;
 
@@ -16,11 +16,13 @@ namespace GameManager {
             Inventory = GetComponent<InventoryManager>();
             HUD = GetComponent<HUDManager>();
             Action = GetComponent<ActionManager>();
+            Stats = GetComponent<PlayerStatsManager>();
 
             startSequence = new List<IGameManager> {
                 Inventory,
                 HUD,
-                Action
+                Action,
+                Stats
             };
 
             StartCoroutine(StartupManagers());
