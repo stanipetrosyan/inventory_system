@@ -894,10 +894,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f3ee9139104bc88477326e26c3c93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerCamera: {fileID: 963194227}
 --- !u!1 &1086413097
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,30 +932,11 @@ Transform:
   - {fileID: 1476727020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1474746883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9145445039340889999, guid: 276f2190eae3fd5d5af575d742e3157c, type: 3}
-  m_PrefabInstance: {fileID: 1561482966624123706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1474746884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5450604367877255278, guid: 276f2190eae3fd5d5af575d742e3157c, type: 3}
   m_PrefabInstance: {fileID: 1561482966624123706}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1474746888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474746883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 787326c0bb1642648b1b850f9a781412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 14ba8277c5f91ad61a8425327b360e3e, type: 2}
-  interacted: 0
 --- !u!1001 &1476727019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1376,10 +1357,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9145445039340889999, guid: 276f2190eae3fd5d5af575d742e3157c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1474746888}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 276f2190eae3fd5d5af575d742e3157c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

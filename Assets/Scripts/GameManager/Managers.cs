@@ -11,17 +11,17 @@ namespace GameManager {
         private List<IGameManager> startSequence;
 
 
-            void Awake() {
-                Inventory = GetComponent<InventoryManager>();
-                HUD = GetComponent<HUDManager>();
+        void Awake() {
+            Inventory = GetComponent<InventoryManager>();
+            HUD = GetComponent<HUDManager>();
 
-                startSequence = new List<IGameManager> {
-                    Inventory,
-                    HUD
-                };
+            startSequence = new List<IGameManager> {
+                Inventory,
+                HUD
+            };
 
-                StartCoroutine(StartupManagers());
-            }
+            StartCoroutine(StartupManagers());
+        }
 
         private IEnumerator StartupManagers() {
             foreach (IGameManager manager in startSequence) {
