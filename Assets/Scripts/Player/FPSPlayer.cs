@@ -19,10 +19,6 @@ namespace Player {
 
         void Start() {
             characterController = GetComponent<CharacterController>();
-
-            // Lock cursor
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
         void Update() {

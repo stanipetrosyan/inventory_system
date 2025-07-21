@@ -27,11 +27,23 @@ namespace GameManager {
             else {
                 alreadyExists.ForEach(inventoryItem => inventoryItem.count++);
             }
-            
         }
+        
+        
 
         public List<UsableItem> GetItems() {
             return inventory;
+        }
+
+        public void UseItem(UsableItem item) {
+            Debug.Log("Using item " + item.name);
+            item.Use();
+
+            if (item.count == 0) {
+                inventory.Remove(item);
+            }
+            
+            Managers.Action.PerformAction(item);
         }
     }
 }

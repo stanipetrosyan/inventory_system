@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameManager {
-    [RequireComponent(typeof(InventoryManager), typeof(HUDManager))]
+    [RequireComponent(typeof(InventoryManager), typeof(HUDManager), typeof(ActionManager))]
     public class Managers : MonoBehaviour {
         public static InventoryManager Inventory { get; private set; }
         public static HUDManager HUD { get; private set; }
+        public static ActionManager Action { get; private set; }
 
         private List<IGameManager> startSequence;
 
@@ -14,10 +15,12 @@ namespace GameManager {
         void Awake() {
             Inventory = GetComponent<InventoryManager>();
             HUD = GetComponent<HUDManager>();
+            Action = GetComponent<ActionManager>();
 
             startSequence = new List<IGameManager> {
                 Inventory,
-                HUD
+                HUD,
+                Action
             };
 
             StartCoroutine(StartupManagers());

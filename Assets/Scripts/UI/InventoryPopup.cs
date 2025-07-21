@@ -15,9 +15,7 @@ namespace UI {
                 var itemObject = Instantiate(itemPrefab, background.transform);
                 var itemComponent = itemObject.GetComponent<UsableItemUI>();
 
-                itemComponent.SetIcon(item.icon);
-                itemComponent.SetDescription(item.displayName);
-                itemComponent.SetCount(item.count.ToString());
+                itemComponent.SetItem(item);
 
                 itemObject.transform.localPosition = new Vector2(x, y);
 
