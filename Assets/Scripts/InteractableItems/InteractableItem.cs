@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using GameManager;
 using Inventory;
 using UnityEngine;
 
 namespace InteractableItems {
-    public class Key : MonoBehaviour, Interactable {
+    public class InteractableItem : MonoBehaviour, Interactable {
         [SerializeField] private UsableItem item;
         public bool interacted = false;
         
@@ -13,6 +12,7 @@ namespace InteractableItems {
             
             Managers.Inventory.Add(item);
             interacted = true;
+            Destroy(gameObject);
         }
 
 
