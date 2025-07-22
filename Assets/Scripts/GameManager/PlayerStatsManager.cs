@@ -29,6 +29,8 @@ namespace GameManager {
         public void IncrementEnergy() {
             energy += 20;
             Debug.Log("Energy: " + energy);
+            
+            onStatsChanged?.Invoke();
         }
     }
 }
