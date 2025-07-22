@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using GameManager;
 using Inventory;
 using TMPro;
@@ -6,11 +7,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI {
-    public class UsableItemUI : MonoBehaviour, IPointerClickHandler {
+    public class UsableItemUI : MonoBehaviour {
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text descriptionText;
         [SerializeField] private TMP_Text countText;
+        [SerializeField] private Button useItem;
         private UsableItem item;
+
+        private void Start() {
+            useItem.onClick.AddListener(UseItem);
+        }
 
         public int GetWidth() {
             return (int)GetComponent<RectTransform>().rect.width;
@@ -24,7 +30,7 @@ namespace UI {
             countText.text = $"Count: {item.count}";
         }
 
-        public void OnPointerClick(PointerEventData eventData) {
+        private void UseItem() {
             Managers.Inventory.UseItem(item);
         }
     }

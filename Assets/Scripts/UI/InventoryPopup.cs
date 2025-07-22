@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GameManager;
 using UnityEngine;
@@ -9,8 +10,25 @@ namespace UI {
         private int spaceBetweenItems;
         private List<GameObject> items = new List<GameObject>();
 
+        private void Start() {
+            Managers.Inventory.onItemUsed += OnItemUsed;
+        }
 
         private void OnEnable() {
+            GenerateItems();
+        }
+
+        private void OnDisable() {
+            ClearAllItems();
+        }
+
+
+        private void OnItemUsed() {
+            ClearAllItems();
+            GenerateItems();
+        }
+
+        private void GenerateItems() {
             var x = -450;
             var y = 150;
 
@@ -30,7 +48,8 @@ namespace UI {
             });
         }
 
-        private void OnDisable() {
+
+        private void ClearAllItems() {
             items.ForEach(Destroy);
             items.Clear();
         }

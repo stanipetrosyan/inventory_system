@@ -9,6 +9,10 @@ namespace GameManager {
 
         [SerializeField] private List<UsableItem> inventory;
 
+        public delegate void OnItemUsed();
+
+        public event OnItemUsed onItemUsed;
+
         public void Startup() {
             Debug.Log("Inventory manager starting...");
 
@@ -28,8 +32,7 @@ namespace GameManager {
                 alreadyExists.ForEach(inventoryItem => inventoryItem.count++);
             }
         }
-        
-        
+
 
         public List<UsableItem> GetItems() {
             return inventory;
@@ -42,7 +45,8 @@ namespace GameManager {
             if (item.count == 0) {
                 inventory.Remove(item);
             }
-            
+
+            onItemUsed?.Invoke();
             Managers.Action.PerformAction(item);
         }
     }

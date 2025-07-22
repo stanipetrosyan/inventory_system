@@ -1,11 +1,15 @@
+using UI;
 using UnityEngine;
 
 namespace GameManager {
     public class PlayerStatsManager : MonoBehaviour, IGameManager {
         public ManagerStatus status { get; private set; }
 
-        private int health;
-        private int energy;
+        public int health;
+        public int energy;
+        
+        public delegate void OnStatsChanged();
+        public event OnStatsChanged onStatsChanged;
         
         public void Startup() {
             health = 0;
@@ -17,6 +21,8 @@ namespace GameManager {
         public void IncrementHealth() {
             health += 20;
             Debug.Log("Health: " + health);
+            
+            onStatsChanged?.Invoke();
         }
 
         public void IncrementEnergy() {
