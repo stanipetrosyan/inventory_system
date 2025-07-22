@@ -10,7 +10,7 @@ namespace UI {
         [SerializeField] private TMP_Text descriptionText;
         [SerializeField] private TMP_Text countText;
         [SerializeField] private Button useItem;
-        private UsableItemSO _itemSo;
+        private UsableItemSO item;
 
         private void Start() {
             useItem.onClick.AddListener(UseItem);
@@ -21,15 +21,15 @@ namespace UI {
         }
 
         public void SetItem(UsableItemSO usableItemSo) {
-            this._itemSo = usableItemSo;
+            this.item = usableItemSo;
 
-            icon.sprite = _itemSo.icon;
-            descriptionText.text = _itemSo.displayName;
-            countText.text = $"Count: {_itemSo.count}";
+            icon.sprite = item.icon;
+            descriptionText.text = item.displayName;
+            countText.text = $"Count: {item.count}";
         }
 
         private void UseItem() {
-            Managers.Inventory.UseItem(_itemSo);
+            Managers.Inventory.UseItem(item);
         }
     }
 }

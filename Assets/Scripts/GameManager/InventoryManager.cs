@@ -22,12 +22,12 @@ namespace GameManager {
             status = ManagerStatus.Started;
         }
 
-        public void Add(UsableItemSO itemSo) {
-            var alreadyExists = inventory.Where(inventoryItem => inventoryItem.type == itemSo.type).ToList();
+        public void Add(UsableItemSO item) {
+            var alreadyExists = inventory.Where(inventoryItem => inventoryItem.type == item.type).ToList();
 
             if (alreadyExists.Count == 0) {
-                itemSo.count = 1;
-                inventory.Add(itemSo);
+                item.count = 1;
+                inventory.Add(item);
             }
             else {
                 alreadyExists.ForEach(inventoryItem => inventoryItem.count++);
@@ -39,16 +39,16 @@ namespace GameManager {
             return inventory;
         }
 
-        public void UseItem(UsableItemSO itemSo) {
-            Debug.Log("Using item " + itemSo.name);
-            itemSo.Use();
+        public void UseItem(UsableItemSO item) {
+            Debug.Log("Using item " + item.name);
+            item.Use();
 
-            if (itemSo.count == 0) {
-                inventory.Remove(itemSo);
+            if (item.count == 0) {
+                inventory.Remove(item);
             }
 
             onItemUsed?.Invoke();
-            Managers.Action.PerformAction(itemSo);
+            Managers.Action.PerformAction(item);
         }
     }
 }
