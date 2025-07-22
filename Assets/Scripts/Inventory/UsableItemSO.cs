@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Inventory {
     [CreateAssetMenu(fileName = "UsableItem", menuName = "ScriptableObjects/UsableItem")]
-    public class UsableItem: ScriptableObject{
+    public class UsableItemSO: ScriptableObject{
         public int count = 1;
         public string displayName;
         public Type type;

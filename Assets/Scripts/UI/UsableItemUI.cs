@@ -1,9 +1,7 @@
-using System.ComponentModel;
 using GameManager;
 using Inventory;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI {
@@ -12,7 +10,7 @@ namespace UI {
         [SerializeField] private TMP_Text descriptionText;
         [SerializeField] private TMP_Text countText;
         [SerializeField] private Button useItem;
-        private UsableItem item;
+        private UsableItemSO _itemSo;
 
         private void Start() {
             useItem.onClick.AddListener(UseItem);
@@ -22,16 +20,16 @@ namespace UI {
             return (int)GetComponent<RectTransform>().rect.width;
         }
 
-        public void SetItem(UsableItem usableItem) {
-            this.item = usableItem;
+        public void SetItem(UsableItemSO usableItemSo) {
+            this._itemSo = usableItemSo;
 
-            icon.sprite = item.icon;
-            descriptionText.text = item.displayName;
-            countText.text = $"Count: {item.count}";
+            icon.sprite = _itemSo.icon;
+            descriptionText.text = _itemSo.displayName;
+            countText.text = $"Count: {_itemSo.count}";
         }
 
         private void UseItem() {
-            Managers.Inventory.UseItem(item);
+            Managers.Inventory.UseItem(_itemSo);
         }
     }
 }

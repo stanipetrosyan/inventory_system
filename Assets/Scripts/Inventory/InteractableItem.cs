@@ -1,16 +1,14 @@
 using GameManager;
-using Inventory;
+using Port;
 using UnityEngine;
 
-namespace InteractableItems {
+namespace Inventory {
     public class InteractableItem : MonoBehaviour, Interactable {
-        [SerializeField] private UsableItem item;
+        [SerializeField] private UsableItemSO itemSo;
         public bool interacted = false;
-        
+
         public void Interact() {
-            Debug.Log("Collected");
-            
-            Managers.Inventory.Add(item);
+            Managers.Inventory.Add(itemSo);
             interacted = true;
             Destroy(gameObject);
         }

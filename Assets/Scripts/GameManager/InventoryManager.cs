@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Inventory;
+using Port;
 using UnityEngine;
 
 namespace GameManager {
     public class InventoryManager : MonoBehaviour, IGameManager {
         public ManagerStatus status { get; private set; }
 
-        [SerializeField] private List<UsableItem> inventory;
+        [SerializeField] private List<UsableItemSO> inventory;
 
         public delegate void OnItemUsed();
 
@@ -16,17 +17,17 @@ namespace GameManager {
         public void Startup() {
             Debug.Log("Inventory manager starting...");
 
-            inventory = new List<UsableItem>();
+            inventory = new List<UsableItemSO>();
 
             status = ManagerStatus.Started;
         }
 
-        public void Add(UsableItem item) {
-            var alreadyExists = inventory.Where(inventoryItem => inventoryItem.type == item.type).ToList();
+        public void Add(UsableItemSO itemSo) {
+            var alreadyExists = inventory.Where(inventoryItem => inventoryItem.type == itemSo.type).ToList();
 
             if (alreadyExists.Count == 0) {
-                item.count = 1;
-                inventory.Add(item);
+                itemSo.count = 1;
+                inventory.Add(itemSo);
             }
             else {
                 alreadyExists.ForEach(inventoryItem => inventoryItem.count++);
@@ -34,20 +35,20 @@ namespace GameManager {
         }
 
 
-        public List<UsableItem> GetItems() {
+        public List<UsableItemSO> GetItems() {
             return inventory;
         }
 
-        public void UseItem(UsableItem item) {
-            Debug.Log("Using item " + item.name);
-            item.Use();
+        public void UseItem(UsableItemSO itemSo) {
+            Debug.Log("Using item " + itemSo.name);
+            itemSo.Use();
 
-            if (item.count == 0) {
-                inventory.Remove(item);
+            if (itemSo.count == 0) {
+                inventory.Remove(itemSo);
             }
 
             onItemUsed?.Invoke();
-            Managers.Action.PerformAction(item);
+            Managers.Action.PerformAction(itemSo);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Inventory;
 using Player;
+using Port;
 using TMPro;
 using UnityEngine;
 
@@ -12,15 +13,15 @@ namespace GameManager {
             status = ManagerStatus.Started;
         }
 
-        public void PerformAction(UsableItem item) {
+        public void PerformAction(UsableItemSO itemSo) {
             Debug.Log("Performing action");
-            switch (item.type) {
-                case UsableItem.Type.KEY:
+            switch (itemSo.type) {
+                case UsableItemSO.Type.KEY:
                     break;
-                case UsableItem.Type.HEALTH_POTION:
+                case UsableItemSO.Type.HEALTH_POTION:
                     Managers.Stats.IncrementHealth();
                     break;
-                case UsableItem.Type.ENERGY_POTION:
+                case UsableItemSO.Type.ENERGY_POTION:
                     Managers.Stats.IncrementEnergy();
                     break;
                 default:

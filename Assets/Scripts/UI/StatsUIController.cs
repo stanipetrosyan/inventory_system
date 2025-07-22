@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 namespace UI {
-    public class StatsPopup : MonoBehaviour {
+    public class StatsUIController : MonoBehaviour {
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private TMP_Text energyText;        
         private void Start() {

@@ -1,4 +1,6 @@
-namespace GameManager {
+using GameManager;
+
+namespace Port {
     public interface IGameManager {
         ManagerStatus status {get;}
 
